@@ -1,0 +1,283 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#backBtn, #howToUseBtn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#backBtn:hover, #howToUseBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+#raffleInfo {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    margin: 0;
+    font-size: 2em; /* Ajuste do tamanho da fonte para maior impacto */
+    text-align: center;
+}
+
+p {
+    color: #555;
+    text-align: center;
+    margin: 5px 0;
+}
+
+#pixName, #pixKey {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+#pixKeyContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alinha o botão e a chave */
+    margin-top: 10px;
+}
+
+#pixKey {
+    flex: 1;
+    margin-right: 10px;
+    word-break: break-all; /* Garante que a chave não quebre o layout */
+}
+
+#copyPixBtn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#copyPixBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.number-item {
+    background-color: #f0f0f0;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1; /* Mantém os quadrados */
+}
+
+.number-item:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.reserved {
+    background-color: #ffad33; /* Amarelo para números reservados */
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#reservationForm {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#reservationForm input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#reservationForm button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: calc(100% - 20px);
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#reservationForm button:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+footer button {
+    flex-grow: 1;
+    margin: 0 5px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+footer button:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+#instructions {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+#instructions h2 {
+    color: #333;
+    margin-top: 0;
+    text-align: center;
+}
+
+#instructions p {
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #raffleInfo, #reservationForm, #instructions {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .number-item {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #backBtn, #howToUseBtn, #copyPixBtn {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #reservationForm input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    #reservationForm button {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer button {
+        margin: 5px 0;
+    }
+
+    #pixName, #pixKey {
+        font-size: 1em;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .number-item {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #backBtn, #howToUseBtn, #copyPixBtn {
+        font-size: 0.8em;
+        padding: 6px;
+    }
+
+    #reservationForm input[type="text"] {
+        font-size: 0.8em;
+    }
+
+    #reservationForm button {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    #pixName, #pixKey {
+        font-size: 0.9em;
+        margin: 4px 0;
+    }
+}

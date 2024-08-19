@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa</title>
+    <link rel="stylesheet" href="compartilhar-rifa.css">
+</head>
+<body>
+
+    <header>
+        <button id="backBtn" style="display: none;"></button> <!-- Ocultar por padrão -->
+        <h1 id="raffleName">Nome da Rifa</h1>
+        <button id="howToUseBtn">Como Usar</button>
+    </header>
+
+    <div id="raffleInfo">
+        <p id="raffleDescription">Descrição da Rifa</p>
+        <p id="raffleValue">Valor do Número: R$ 0,00</p>
+        <div id="pixKeyContainer">
+            <p id="pixKey"></p>
+            <button id="copyPixKeyBtn">Copiar Chave Pix</button>
+        </div>
+    </div>
+
+    <ul id="numbersGrid" class="numbers-grid"></ul>
+
+    <div id="reservationForm" style="display: none;">
+        <input type="text" id="userName" placeholder="Seu nome">
+        <input type="text" id="userPhone" placeholder="Seu telefone (opcional)">
+        <button id="reserveBtn">Reservar Número</button>
+    </div>
+
+    <footer>
+        <button id="copyLinkBtn">Copiar Link da Página</button>
+        <button id="shareWhatsAppBtn">Compartilhar no WhatsApp</button>
+    </footer>
+
+    <div id="instructions" style="display: none;">
+        <h2>Como Usar a Rifa</h2>
+        <p>1. Clique em um número disponível.</p>
+        <p>2. Preencha seu nome e opcionalmente seu telefone.</p>
+        <p>3. Copie a chave Pix para efetuar o pagamento.</p>
+        <p>4. Compartilhe a rifa com amigos no WhatsApp ou copie o link para compartilhar.</p>
+        <p>Dica: Identifique-se ao máximo ao inserir o nome, por exemplo, "Maria da Igreja" ou "João Trabalho".</p>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"></script>
+    <script type="module" src="compartilhar-rifa.js" defer></script>
+
+</body>
+</html>

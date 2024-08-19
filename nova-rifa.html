@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Nova Rifa</title>
+    <link rel="stylesheet" href="cssnovarifa.css"> <!-- Adicione seu CSS aqui -->
+</head>
+<body>
+    <div class="container">
+        <h1 id="formTitle">Cadastrar Nova Rifa</h1>
+        <form id="raffleForm">
+            <label for="raffleName">Nome da Rifa:</label>
+            <input type="text" id="raffleName" required>
+            <small>Digite um nome descritivo para sua rifa.</small><br>
+
+            <label for="raffleDescription">Descrição (opcional):</label>
+            <textarea id="raffleDescription" placeholder="Forneça mais detalhes sobre o prêmio ou a rifa."></textarea><br>
+
+            <label for="raffleValue">Valor do Número:</label>
+            <input type="text" id="raffleValue" required>
+            <small>Exemplo: 10.00 para R$10,00.</small><br>
+
+            <label for="raffleQuantity">Quantidade de Números (máx. 150):</label>
+            <input type="number" id="raffleQuantity" min="1" max="150" required>
+            <small>Escolha um número entre 1 e 150.</small><br>
+
+            <!-- Campos opcionais para PIX -->
+            <label for="pixKey">Chave PIX para Recebimento (opcional):</label>
+            <input type="text" id="pixKey" placeholder="Insira sua chave PIX">
+            <small>Insira a chave PIX para receber os pagamentos.</small><br>
+
+            <label for="pixName">Nome para Exibir no PIX (opcional):</label>
+            <input type="text" id="pixName" placeholder="Insira o nome que aparecerá no PIX">
+            <small>Nome associado à chave PIX.</small><br><br>
+
+            <button type="submit" id="saveRaffleBtn">Salvar Nova Rifa</button>
+            <button type="button" id="backBtn">Voltar para Home</button>
+        </form>
+    </div><br>
+    
+    <script type="module" src="novaRifa.js"></script> <!-- Referência ao arquivo JavaScript -->
+</body>
+</html>

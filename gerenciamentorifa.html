@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Rifa</title>
+    <link rel="stylesheet" href="style.css"> <!-- Adicione seu CSS aqui -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="gerenciamentorifa.js" defer></script> <!-- Inclui o gerenciamentorifa.js -->
+    <style>
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+        .numbers-grid li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .numbers-grid .reserved {
+            background-color: orange;
+            color: #fff;
+        }
+        .numbers-grid .paid {
+            background-color: red;
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerenciar Rifa</h1>
+    </header>
+
+    <main>
+        <!-- Resumo dos dados da rifa -->
+        <section id="raffleDetails">
+            <h2>Detalhes da Rifa</h2>
+            <!-- Os detalhes da rifa serão inseridos aqui -->
+             
+        </section>
+        
+        <!-- Grid dos números -->
+        <section>
+            <h2>Gerencie seus numeros</h2>
+            <p>Clique no numero para aprovar ou reprovar uma reserva, numeros reservados vão aparecer em laranja, números que você aprovar vão aparecer em vermelho .</p>
+            <ul id="numbersGrid" class="numbers-grid">
+                <!-- Os números da rifa serão inseridos aqui -->
+                <!-- Exemplo de item de lista com tooltip -->
+                <li class="reserved" data-tooltip="Número 2 - Reservado por João">2</li>
+                <li class="paid" data-tooltip="Número 5 - Pago por Maria">5</li>
+            </ul>
+        </section>
+         <!-- Botão de Aprovação/Reprovação e Mensagens de Feedback -->
+         <section id="reservationForm" style="display: none;">
+            <h3>Aprovar ou Reprovar Reserva</h3>
+            <button id="approveBtn">Aprovar</button>
+            <button id="rejectBtn">Reprovar</button>
+            <p id="feedbackMessage" style="color: green;"></p> <!-- Mensagem de feedback -->
+        </section>
+        <!-- Botões principais -->
+        <section>
+            <button id="openRaffleBtn">ABRIR RIFA / MARCAR NÚMERO</button>
+            <button id="drawBtn">Sortear</button>
+            <button id="backBtn">Voltar</button>
+        </section>
+
+        
+        <!-- Informações sobre arrecadação -->
+        <section>
+            <h2>Arrecadação</h2>
+            <p id="estimatedEarningsLabel">Valor Estimado de Arrecadação: R$ 0,00</p>
+            <p id="currentEarningsLabel">Valor Atual de Arrecadação: R$ 0,00</p>
+        </section>
+
+        
+       
+        
+        <!-- Listas de reservas com abas -->
+        <section>
+            <div class="tabs">
+                <button class="tab-button" onclick="showTab('reservationsByNumber')">Reservas (Ordem Numérica)</button>
+                <button class="tab-button" onclick="showTab('reservationsByDate')">Reservas (Ordem de Data/Hora)</button>
+            </div>
+            
+            <div id="reservationsByNumber" class="tab-content">
+                <h2>Reservas (Ordem Numérica)</h2>
+                <ul id="reservationsListByNumber">
+                    <!-- Lista de reservas em ordem numérica será inserida aqui -->
+                </ul>
+            </div>
+
+            <div id="reservationsByDate" class="tab-content">
+                <h2>Reservas (Ordem de Data/Hora)</h2>
+                <ul id="reservationsListByDate">
+                    <!-- Lista de reservas em ordem de data/hora será inserida aqui -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para confirmação de ações -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="confirmationMessage"></p>
+            <button id="confirmAction">Confirmar</button>
+            <button id="cancelAction">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.toggle('active', tab.id === tabId);
+            });
+        }
+
+        document.querySelectorAll('.numbers-grid li').forEach(li => {
+            li.addEventListener('mouseover', function() {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = this.getAttribute('data-tooltip');
+                this.appendChild(tooltip);
+            });
+
+            li.addEventListener('mouseout', function() {
+                const tooltip = this.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
